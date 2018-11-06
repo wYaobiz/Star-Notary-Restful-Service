@@ -36,15 +36,15 @@ Trying to follow good architecture concepts as the one proposed by Uncle Bob som
 curl -X "POST" "http://localhost:8000/requestValidation" \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
-  "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ"
+  "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ"
   }'
 ```
 >Response
 ```JSON
 {
-  "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-  "requestTimeStamp": "1532296090",
-  "message": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ:1532296090:starRegistry",
+  "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+  "requestTimeStamp": "1541456976",
+  "message": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ:1541456976:starRegistry",
   "validationWindow": 300
 }
 ```
@@ -53,8 +53,8 @@ curl -X "POST" "http://localhost:8000/requestValidation" \
 curl -X "POST" "http://localhost:8000/message-signature/validate" \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
-  "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-  "signature": "H6ZrGrF0Y4rMGBMRT2+hHWGbThTIyhBS0dNKQRov9Yg6GgXcHxtO9GJN4nwD2yNXpnXHTWU9i+qdw5vpsooryLU="
+  "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+  "signature": "IJqgyJ0gw24bgL6A0RaJEECfrFeGaAHP92VDNe4MoMgOaAvTxaUUe/hRv+KwRJaa5rVUUs4hipdsjjQoP1KkuYo="
 }'
 ```
 >Response
@@ -62,10 +62,10 @@ curl -X "POST" "http://localhost:8000/message-signature/validate" \
 {
   "registerStar": true,
   "status": {
-    "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-    "requestTimeStamp": "1532296090",
-    "message": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ:1532296090:starRegistry",
-    "validationWindow": 193,
+    "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+    "requestTimeStamp": "1541456976",
+    "message": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ:1541456976:starRegistry",
+    "validationWindow": 148,
     "messageSignature": "valid"
   }
 }
@@ -78,7 +78,7 @@ curl -X "POST" "http://localhost:8000/message-signature/validate" \
 curl -X "POST" "http://localhost:8000/block" \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
-  "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
+  "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
   "star": {
     "dec": "-26° 29' 24.9",
     "ra": "16h 29m 1.0s",
@@ -89,18 +89,18 @@ curl -X "POST" "http://localhost:8000/block" \
 >Response
 ```JSON
 {
-  "hash": "a59e9e399bc17c2db32a7a87379a8012f2c8e08dd661d7c0a6a4845d4f3ffb9f",
-  "height": 1,
-  "body": {
-    "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-    "star": {
-      "ra": "16h 29m 1.0s",
-      "dec": "-26° 29' 24.9",
-      "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
-    }
-  },
-  "time": "1532296234",
-  "previousBlockHash": "49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3"
+    "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+    "height": 1,
+    "body": {
+        "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+        "star": {
+            "dec": "-26° 29' 24.9",
+            "ra": "16h 29m 1.0s",
+            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+        }
+    },
+    "time": "1541471742",
+    "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
 }
 ```
 
@@ -108,48 +108,46 @@ curl -X "POST" "http://localhost:8000/block" \
 
 >**Lookup by Blockchain ID (Wallet Address)**
 ```bash
-curl "http://localhost:8000/stars/address/142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ"
+curl "http://localhost:8000/stars/address/1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ"
 ```
 >Response
 ```JSON
 [
-  {
-    "hash": "a59e9e399bc17c2db32a7a87379a8012f2c8e08dd661d7c0a6a4845d4f3ffb9f",
-    "height": 1,
-    "body": {
-      "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-      "star": {
-        "ra": "16h 29m 1.0s",
-        "dec": "-26° 29' 24.9",
-        "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
-        "storyDecoded": "Found star using https://www.google.com/sky/"
-      }
-    },
-    "time": "1532296234",
-    "previousBlockHash": "49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3"
-  }
+    {
+        "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+        "height": 1,
+        "body": {
+            "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+            "star": {
+                "dec": "-26° 29' 24.9",
+                "ra": "16h 29m 1.0s",
+                "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+            }
+        },
+        "time": "1541471742",
+        "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
+    }
 ]
 ```
 >**Lookup by Block Hash**
 ```bash
-curl "http://localhost:8000/stars/hash/a59e9e399bc17c2db32a7a87379a8012f2c8e08dd661d7c0a6a4845d4f3ffb9f"
+curl "http://localhost:8000/stars/hash/5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328"
 ```
 >Response
 ```JSON
 {
-  "hash": "a59e9e399bc17c2db32a7a87379a8012f2c8e08dd661d7c0a6a4845d4f3ffb9f",
-  "height": 1,
-  "body": {
-    "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-    "star": {
-      "ra": "16h 29m 1.0s",
-      "dec": "-26° 29' 24.9",
-      "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
-      "storyDecoded": "Found star using https://www.google.com/sky/"
-    }
-  },
-  "time": "1532296234",
-  "previousBlockHash": "49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3"
+    "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+    "height": 1,
+    "body": {
+        "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+        "star": {
+            "dec": "-26° 29' 24.9",
+            "ra": "16h 29m 1.0s",
+            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+        }
+    },
+    "time": "1541471742",
+    "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
 }
 ```
 >**Lookup by Block Height**
@@ -159,19 +157,18 @@ curl "http://localhost:8000/block/1"
 >Response
 ```JSON
 {
-  "hash": "a59e9e399bc17c2db32a7a87379a8012f2c8e08dd661d7c0a6a4845d4f3ffb9f",
-  "height": 1,
-  "body": {
-    "address": "142BDCeSGbXjWKaAnYXbMpZ6sbrSAo3DpZ",
-    "star": {
-      "ra": "16h 29m 1.0s",
-      "dec": "-26° 29' 24.9",
-      "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
-      "storyDecoded": "Found star using https://www.google.com/sky/"
-    }
-  },
-  "time": "1532296234",
-  "previousBlockHash": "49cce61ec3e6ae664514d5fa5722d86069cf981318fc303750ce66032d0acff3"
+    "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+    "height": 1,
+    "body": {
+        "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+        "star": {
+            "dec": "-26° 29' 24.9",
+            "ra": "16h 29m 1.0s",
+            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+        }
+    },
+    "time": "1541471742",
+    "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
 }
 ```
 
