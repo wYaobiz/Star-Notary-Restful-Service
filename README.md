@@ -32,7 +32,7 @@ $ node app.js
 ```console
 ├── app.js
 ├── db
-│   ├── levelSandbox.js
+│   └── levelSandbox.js
 ├── domain
 │   └── block.js
 │   └── messageQueue.js
