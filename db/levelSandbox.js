@@ -9,6 +9,7 @@ module.exports = (function (db_folder, encoding = "utf-8") {
         createReadStream: function () {
             return db.createReadStream()
         },
+        
         //Adding new Block to DB
         _addLevelDBData: function (key, value) {
             return new Promise((resolve, reject) => {

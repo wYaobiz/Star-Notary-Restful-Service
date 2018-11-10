@@ -1,3 +1,6 @@
+/* ===== Star Class ==============================
+|  Class with a constructor for star 			   |
+|  ===============================================*/
 class Star {
     constructor(data) {
         this.dec = data.dec,

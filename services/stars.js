@@ -3,8 +3,6 @@ const MessageQueue = require('../domain/messageQueue').MessageQueue;
 const Block = require('../domain/block');
 const Blockchain = require('../domain/simpleChain');
 
-//const Block = simpleChain.Block;
-//const Blockchain = simpleChain.Blockchain;
 const blockchain = new Blockchain();
 
 exports.registerStar = function (address, star) {

@@ -3,6 +3,8 @@
 Notarizing ownership of digital assets by building a Star Registry
 
 ## Project Overview
+Data stored on a blockchain can vary from digital assets (e.g. documents, media) to copyrights and patent ownership. These pieces of data need to be reliably secured, and we require a way to prove they exist — this is where signing and validation are key. In this project you will build a private blockchain notary service to validate and provide proof of existence for your favorite star in the universe.
+
 The goal is to allow users to notarize star ownership using their blockchain identity:
 
 | Feature | Description |
@@ -13,19 +15,41 @@ The goal is to allow users to notarize star ownership using their blockchain ide
 | Share a Story | Once registered, each star has the ability to share a story. |
 | Star Lookup | Users will be able to look up their star by hash, block height, or wallet address. |
 
-### Installing
+### Requirements
+* Node
+* Node Package Manager (npm)
+
+### Install & Run
 ```bash
 $ npm install
 ```
-### Usage
 After installing please run app in terminal:
 ```bash
 $ node app.js
 ```
-### Clean Architecture
-Trying to follow good architecture concepts as the one proposed by Uncle Bob some years ago, called Clean Architecture. It supports the idea of making the model independent from the framework, libraries, dbs…
 
-![Clean Architecture](https://i.imgur.com/OVZdVMr.png)
+### Code Organization 
+```console
+├── app.js
+├── db
+│   ├── levelSandbox.js
+├── domain
+│   └── block.js
+│   └── messageQueue.js
+│   └── simpleChain.js
+│   └── star.js
+├── routes
+│   └── blocks.js
+│   └── routes.js
+│   └── stars.js
+│   └── validation.js
+└── services
+    ├── star.js
+    └── validation.js
+
+4 directories, 12 files
+```
+
 
 ## Functionality and Testing
 
@@ -172,12 +196,11 @@ curl "http://localhost:8000/block/1"
 }
 ```
 
-
 ## Built With
 
-* [Express](https://expressjs.com/) - The web framework used
-* [Level](https://github.com/Level/level) - A Node.js-style LevelDB wrapper to persist blockchain
-* [CryptoJS](https://www.npmjs.com/package/crypto-js) - Used to generate SHA256 block hash address
-* [Joi](https://github.com/hapijs/joi) - Object schema validation
 * [BitcoinJS](https://www.npmjs.com/package/bitcoinjs-lib) - Used for validating message signatures
+* [CryptoJS](https://www.npmjs.com/package/crypto-js) - Used to generate SHA256 block hash address
+* [Express](https://expressjs.com/) - The web framework used
+* [Joi](https://github.com/hapijs/joi) - Object schema validation
 * [JSONPath](https://www.npmjs.com/package/jsonpath) - Query JavaScript objects with JSONPath expressions
+* [Level](https://github.com/Level/level) - A Node.js-style LevelDB wrapper to persist blockchain
