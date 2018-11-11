@@ -17,9 +17,9 @@ exports.assignRoutes = function (app) {
     app.get('/block/:blockHeight', blocks.getBlock);
 
     //GET /stars/address:[ADDRESS]
-    app.get('/stars/address/:ADDRESS', stars.getStarByOwnerAddress);
+    app.get('/stars/address::ADDRESS', stars.getStarByOwnerAddress);
 
     //GET /stars/hash:[HASH]
-    app.get('/stars/hash/:HASH', stars.getStarByBlockHash);
+    app.get('/stars/hash::HASH', stars.getStarByBlockHash);
 
 }
