@@ -1,0 +1,1 @@
+module.exports = message => Buffer.from(message, 'hex').toString();

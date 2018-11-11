@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const Block = require('../domain/block');
 const Blockchain = require('../domain/simpleChain');
+const HexDecoder = require('../utils/hexDecoder');
 
 const blockchain = new Blockchain();
 
@@ -33,7 +34,9 @@ exports.getBlock = function (req, res, next) {
         if (error) return res.status(400).json(error.details[0].message);
 
         blockchain.getBlock(req.params.blockHeight).then(block => {
-            res.json(block);
+            const decodedBlock = block;
+            decodedBlock.body.star.decodedStory = HexDecoder(block.body.star.story);
+            res.json(decodedBlock);
         }).catch(err => {
             res.status(400).json(err);
         });

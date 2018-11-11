@@ -1,5 +1,6 @@
 const service = require('../services/stars');
 const Joi = require('joi');
+const HexDecoder = require('../utils/hexDecoder');
 
 //Step 2: Configure Star Registration Endpoint
 exports.registerStar = function (req, res, next) {
@@ -43,6 +44,9 @@ exports.getStarByOwnerAddress = function (req, res, next) {
 
     service.getStarByOwnerAddress(req.params.ADDRESS)
         .then(responseMessage => {
+            //const decodedRes = responseMessage;
+            //decodedRes.body.star.decodedStory = HexDecoder(responseMessage.body.star.story);
+            //res.json(decodedRes);
             res.json(responseMessage);
         })
         .catch(err => {
@@ -64,7 +68,10 @@ exports.getStarByBlockHash = function (req, res, next) {
 
     service.getStarByBlockHash(req.params.HASH)
         .then(responseMessage => {
-            res.json(responseMessage);
+            const decodedRes = responseMessage;
+            decodedRes.body.star.decodedStory = HexDecoder(responseMessage.body.star.story);
+            res.json(decodedRes);
+            //res.json(responseMessage);
         })
         .catch(err => {
             res.status(400).json(err);

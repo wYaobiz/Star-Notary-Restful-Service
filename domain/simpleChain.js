@@ -5,6 +5,7 @@ const SHA256 = require('crypto-js/sha256');
 const levelDB = require('../db/levelSandbox')('data/chaindata', 'json');
 const jp = require('jsonpath');
 const Block = require('./block');
+const HexDecoder = require('../utils/hexDecoder');
 
 
 /* ===== Blockchain Class ==========================
@@ -97,8 +98,14 @@ class Blockchain {
         .on('data', function (data) {
           const jsonObject = data.value;
           const val = jp.query(jsonObject, pathExpression);
-          if (val[0] === searchValue)
+          if (val[0] === searchValue){
+            if (jsonObject.body.star.story) {
+              jsonObject.body.star.decodedStory = HexDecoder(jsonObject.body.star.story);
+            }
             result.push(jsonObject);
+          }
+          // if (val[0] === searchValue)
+          //   result.push(jsonObject);
         }).on('close', function (err) {
           resolve(result);
         }).on('end', function (err) {
