@@ -66,10 +66,10 @@ curl -X "POST" "http://localhost:8000/requestValidation" \
 >Response
 ```JSON
 {
-  "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
-  "requestTimeStamp": "1541456976",
-  "message": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ:1541456976:starRegistry",
-  "validationWindow": 300
+    "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+    "requestTimeStamp": "1541985782",
+    "message": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ:1541985782:starRegistry",
+    "validationWindow": 300
 }
 ```
 >**Verifying User Message Signature**
@@ -78,20 +78,20 @@ curl -X "POST" "http://localhost:8000/message-signature/validate" \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
   "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
-  "signature": "IJqgyJ0gw24bgL6A0RaJEECfrFeGaAHP92VDNe4MoMgOaAvTxaUUe/hRv+KwRJaa5rVUUs4hipdsjjQoP1KkuYo="
+  "signature": "IDkUkjNMoTPko4rb+8BMksHhrPBFUK1G4Yw8a6TRJja5L6lmyqevbtJw568en9+8hJrbisx3bX/87A9vin4Rd8k="
 }'
 ```
 >Response
 ```JSON
 {
-  "registerStar": true,
-  "status": {
-    "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
-    "requestTimeStamp": "1541456976",
-    "message": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ:1541456976:starRegistry",
-    "validationWindow": 148,
-    "messageSignature": "valid"
-  }
+    "registerStar": true,
+    "status": {
+        "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
+        "requestTimeStamp": "1541985782",
+        "message": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ:1541985782:starRegistry",
+        "validationWindow": 228,
+        "messageSignature": "valid"
+    }
 }
 ```
 
@@ -113,7 +113,7 @@ curl -X "POST" "http://localhost:8000/block" \
 >Response
 ```JSON
 {
-    "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+    "hash": "dc8d7afe27066b251693fb7ddb01bbf709fc0845f3b6ae0da7f1627390ca9d44",
     "height": 1,
     "body": {
         "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
@@ -123,8 +123,8 @@ curl -X "POST" "http://localhost:8000/block" \
             "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
         }
     },
-    "time": "1541471742",
-    "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
+    "time": "1541985890",
+    "previousBlockHash": "81bfedb42088439c8d33d1e1891735bf201089b68a4d2ff49e18a0a44b97fee3"
 }
 ```
 
@@ -138,40 +138,42 @@ curl "http://localhost:8000/stars/address:1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ"
 ```JSON
 [
     {
-        "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+        "hash": "dc8d7afe27066b251693fb7ddb01bbf709fc0845f3b6ae0da7f1627390ca9d44",
         "height": 1,
         "body": {
             "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
             "star": {
                 "dec": "-26° 29' 24.9",
                 "ra": "16h 29m 1.0s",
-                "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+                "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
+                "storyDecoded": "Found star using https://www.google.com/sky/"
             }
         },
-        "time": "1541471742",
-        "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
+        "time": "1541985890",
+        "previousBlockHash": "81bfedb42088439c8d33d1e1891735bf201089b68a4d2ff49e18a0a44b97fee3"
     }
 ]
 ```
 >**Lookup by Block Hash**
 ```bash
-curl "http://localhost:8000/stars/hash:5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328"
+curl "http://localhost:8000/stars/hash:dc8d7afe27066b251693fb7ddb01bbf709fc0845f3b6ae0da7f1627390ca9d44"
 ```
 >Response
 ```JSON
 {
-    "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+    "hash": "dc8d7afe27066b251693fb7ddb01bbf709fc0845f3b6ae0da7f1627390ca9d44",
     "height": 1,
     "body": {
         "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
         "star": {
             "dec": "-26° 29' 24.9",
             "ra": "16h 29m 1.0s",
-            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
+            "storyDecoded": "Found star using https://www.google.com/sky/"
         }
     },
-    "time": "1541471742",
-    "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
+    "time": "1541985890",
+    "previousBlockHash": "81bfedb42088439c8d33d1e1891735bf201089b68a4d2ff49e18a0a44b97fee3"
 }
 ```
 >**Lookup by Block Height**
@@ -181,18 +183,19 @@ curl "http://localhost:8000/block/1"
 >Response
 ```JSON
 {
-    "hash": "5f4b14dbe3db57b688568c0065445a26c6fb794975b8b93b4f7a84aebf80e328",
+    "hash": "dc8d7afe27066b251693fb7ddb01bbf709fc0845f3b6ae0da7f1627390ca9d44",
     "height": 1,
     "body": {
         "address": "1DSY2Wzjt2uRqJAjfFzBhJhkkFCVQJrELZ",
         "star": {
             "dec": "-26° 29' 24.9",
             "ra": "16h 29m 1.0s",
-            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f"
+            "story": "466f756e642073746172207573696e672068747470733a2f2f7777772e676f6f676c652e636f6d2f736b792f",
+            "storyDecoded": "Found star using https://www.google.com/sky/"
         }
     },
-    "time": "1541471742",
-    "previousBlockHash": "a0461b7b12daf8235977a96c055ad347cdbdbf37a2741bca45fea5e5db9b28df"
+    "time": "1541985890",
+    "previousBlockHash": "81bfedb42088439c8d33d1e1891735bf201089b68a4d2ff49e18a0a44b97fee3"
 }
 ```
 

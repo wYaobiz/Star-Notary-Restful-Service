@@ -8,7 +8,7 @@ exports.registerStar = function (req, res, next) {
     const starSchema = Joi.object({
         dec: Joi.string().required(),//"-26° 29'\'' 24.9",
         ra: Joi.string().required(),//"16h 29m 1.0s",
-        story: Joi.string().min(4).max(500).required(),
+        story: Joi.string().regex(/^[\x00-\x7F]*$/).min(4).max(500).required(),
         mag: Joi.string(),
         constellation: Joi.string().length(3)
     });
@@ -44,9 +44,6 @@ exports.getStarByOwnerAddress = function (req, res, next) {
 
     service.getStarByOwnerAddress(req.params.ADDRESS)
         .then(responseMessage => {
-            //const decodedRes = responseMessage;
-            //decodedRes.body.star.decodedStory = HexDecoder(responseMessage.body.star.story);
-            //res.json(decodedRes);
             res.json(responseMessage);
         })
         .catch(err => {
@@ -69,9 +66,8 @@ exports.getStarByBlockHash = function (req, res, next) {
     service.getStarByBlockHash(req.params.HASH)
         .then(responseMessage => {
             const decodedRes = responseMessage;
-            decodedRes.body.star.decodedStory = HexDecoder(responseMessage.body.star.story);
+            decodedRes.body.star.storyDecoded = HexDecoder(responseMessage.body.star.story);
             res.json(decodedRes);
-            //res.json(responseMessage);
         })
         .catch(err => {
             res.status(400).json(err);

@@ -35,7 +35,7 @@ exports.getBlock = function (req, res, next) {
 
         blockchain.getBlock(req.params.blockHeight).then(block => {
             const decodedBlock = block;
-            decodedBlock.body.star.decodedStory = HexDecoder(block.body.star.story);
+            decodedBlock.body.star.storyDecoded = HexDecoder(block.body.star.story);
             res.json(decodedBlock);
         }).catch(err => {
             res.status(400).json(err);

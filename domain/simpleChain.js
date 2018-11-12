@@ -100,7 +100,7 @@ class Blockchain {
           const val = jp.query(jsonObject, pathExpression);
           if (val[0] === searchValue){
             if (jsonObject.body.star.story) {
-              jsonObject.body.star.decodedStory = HexDecoder(jsonObject.body.star.story);
+              jsonObject.body.star.storyDecoded = HexDecoder(jsonObject.body.star.story);
             }
             result.push(jsonObject);
           }

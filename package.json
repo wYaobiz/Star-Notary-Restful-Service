@@ -1,5 +1,5 @@
 {
-  "name": "private-blockchain-notary-service",
+  "name": "satr-notary-restful-service",
   "version": "1.0.0",
   "description": "Notarizing ownership of digital assets by building a Star Registry",
   "main": "app.js",
